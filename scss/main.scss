@@ -1,0 +1,484 @@
+$primary-color: #FFEFE7;
+$secondary-color: #FFDAC6;
+$tertiary-color: #BABD8D;
+$quaternary-color: #FA9500;
+$primary-text-color: #7C6A0A;
+$font-stack: 'IBM Plex Sans', sans-serif;
+$body-font: 1.8rem;
+
+@mixin flex-center($direction,$content:null,$align:null){
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $content;
+  align-items: $align;
+}
+
+@mixin button-style{
+  button{
+    background: none;
+    border-style: none;
+  }
+}
+
+*{
+  box-sizing: border-box;
+}
+
+html{
+  font-size: 62.5%;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+  background-color: $primary-color;
+  font-family: $font-stack;
+  font-size: $body-font;
+}
+
+figure{
+  margin: 0;
+}
+
+.navbar{
+  width: 100%;
+  height: 100px;
+  color: $primary-text-color;
+  padding: 15px 60px;
+  @include flex-center(row,space-between,center);
+  &__logo{
+    text-decoration: none;
+    color: $primary-text-color;
+    h1{
+      font-size: 2rem;
+      font-weight: 400;
+    }
+  }
+  &__menu{
+    display: flex;
+    gap: 15px;
+    margin: 0;
+    &-item{
+      list-style: none;
+    }
+    &-link{
+      text-decoration: none;
+    }
+    &-icon{
+      color: $primary-text-color;
+    }
+  }
+  .menu__mobile{
+    display: none;
+  }
+}
+
+main{
+  padding: 0 60px;
+}
+
+article{
+  column-gap: 15px;
+  margin: 60px 0;
+  @include flex-center(row,space-between);
+  .main__impact-section{
+    color: $primary-text-color;
+    gap: 25px;
+    width: 50%;
+    padding-top: 50px;
+    @include flex-center(column);
+    &-title{
+      font-size: 5.2rem;
+      margin: 0;
+      padding: 0;
+    }
+    p{
+      width: 70%;
+      line-height: 3.5rem;
+    }
+    @include button-style();
+    button{
+      background-color: $quaternary-color;
+      border-radius: 35px;
+      color: white;
+      font-size: $body-font;
+      font-weight: 700;
+      padding: 15px 40px;
+      width: fit-content;
+      transition: 0.3s ease;
+      &:hover{
+        transform: scale(1.1);
+        transition: transform 0.5s ease;
+      }
+    }
+    &-image{
+      width: 50%;
+      @include flex-center(row,center);
+      & img{
+        border-radius: 20px;
+        height: 500px;
+        object-fit: contain;
+        width: 25vw;
+      }
+    }
+  }
+}
+
+section{
+  width: 100%;
+  height: auto;
+  h2{
+    color: $primary-text-color;
+    font-size: 3.5rem;
+    padding-bottom: 60px;
+  }
+}
+
+.main__product{
+  &-category{
+    &.healthcare{
+      padding-bottom: 60px;
+      & h2{
+        font-weight: 300;
+      }
+      & .card__section{
+        @include flex-center(row,center,center);
+        flex-wrap: wrap;
+        gap: 100px;
+        &-product{
+          background-color: $secondary-color;
+          border-radius: 8px;
+          color: $primary-text-color;
+          height: 502px;
+          padding: 20px;
+          width: 324px;
+          &-icon{
+            width: 100%;
+            padding-bottom: 12px;
+            @include flex-center(row,flex-end);
+            svg{
+              width: 24px;
+              height: 24px;
+              path{
+                stroke: $primary-text-color;
+              }
+            }
+          }
+          &-image{
+            width: 100%;
+            height: auto;
+            @include flex-center(row,center,center);
+            & img{
+              border-radius: 6px;
+              height: 300px;
+              object-fit: cover;
+              width: 100%;
+            }
+          }
+          p {
+            font-size: 1.5rem;
+          }
+        }
+      }
+    }
+    &.furniture{
+      @extend .healthcare;
+      .card__section-product{
+        background-color: $tertiary-color;
+        color: white;
+        svg path{
+            stroke: white;
+        }
+      }
+    }
+  }
+}
+
+.info-section{
+  &__about-us{
+    @extend .healthcare;
+    h2{
+      font-weight: bold;
+    }
+  }
+  &__content{
+    padding: 60px;
+    @include flex-center(row,space-evenly,center);
+    .earth{
+      color: #E86424;
+      gap: 40px;
+      width: 30vw;
+      @include flex-center(row,center,center);
+      img{
+        object-fit: contain;
+      }
+      p{
+        text-align: center;
+        font-size: $body-font;
+      }
+    }
+    .innovation{
+      @extend .earth
+    }
+  }
+  &__gallery{
+    h2{
+      font-weight: bold;
+    }
+    &-images{
+      @include flex-center(row,space-between,center);
+      img{
+        aspect-ratio: 1/1;
+        border-radius: 16px;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        transition: transform 0.3s;
+        width: 30%;
+        &:hover{
+          transform: scale(1.1);
+          transition: transform 0.5s ease;
+        }
+      }
+    }
+  }
+  &__location{
+    color: #E86424;
+    padding-bottom: 60px;
+    h2{
+      padding: 60px 0;
+    }
+    .map{
+      padding-bottom: 60px;
+      @include flex-center(row,center,center);
+      img{
+        width: 100%;
+        border-radius: 16px;
+      }
+    }
+  }
+}
+
+.footer{
+  background-color: $quaternary-color;
+  color: white;
+  height: auto;
+  width: 100%;
+  padding: 40px;
+  &__logo{
+    color: white;
+    font-size: 2.0rem;
+    font-weight: 500;
+    text-decoration: none;
+  }
+  &__menu{
+    list-style: none;
+    padding-left: 0;
+    li{
+      line-height: 3rem;
+    }
+  }
+  &__social-media{
+    @include flex-center(row,center,center);
+    gap: 15px;
+    img{
+      cursor: pointer;
+      width: 32px;
+    }
+  }
+}
+
+// Media Queries
+
+@media (max-width: 992px){
+  article{
+    .main__impact-section{
+      p{
+        width: 95%;
+      }
+      &-image{
+        & img{
+          width: 28vw;
+        }
+      }
+    }
+  }
+
+  .main__product{
+    &-category{
+      &.healthcare{
+        & .card__section{
+          gap: 80px;
+        }
+      }
+    }
+  }
+
+  .info-section{
+    &__content{
+      padding: 60px 0;
+      .earth{
+        gap: 24px;
+        width: 40vw;
+      }
+    }
+  }
+}
+
+@media (max-width: 847px){
+  .navbar{
+    &__menu{
+      display: none;
+    }
+    .menu__mobile{
+      display: block
+    }
+  }
+  article{
+    @include flex-center(column-reverse,center);
+    .main__impact-section{
+      width: 100%;
+      p{
+        width: 100%;
+      }
+      &-image{
+        width: 100%;
+        & img{
+          width: 100%;
+          height: 650px;
+          object-fit: cover;
+        }
+      }
+      .button__container{
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+
+  .main__product{
+    &-category{
+      &.healthcare{
+        & .card__section{
+          flex-wrap: nowrap;
+          justify-content: flex-start;
+          gap: 28px;
+          overflow-x: scroll;
+          overscroll-behavior-x: contain;
+          scroll-snap-type: x proximity;
+          &-product{
+            position: relative;
+            scroll-snap-align: center;
+            width: 70%;
+            min-width: 300px;
+            max-width: 300px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px){
+  .info-section{
+    &__content{
+      flex-direction: column;
+      gap: 58px;
+      padding: 0 0 60px 0;
+      .earth{
+        flex-direction: column;
+        img{
+          width: 80px;
+        }
+      }
+    }
+    &__gallery{
+      &-images{
+        @include flex-center(column,center,center);
+        gap: 60px;
+        img{
+          width: 100%;
+        }
+      }
+    }
+    &__location{
+      .map{
+        padding-bottom: 20px;
+        @include flex-center(row,center,center);
+        img{
+          aspect-ratio: 1/1;
+          height: 400px;
+          object-fit: cover;
+          object-position: center;
+        }
+      }
+    }
+  }
+  
+}
+
+@media (max-width: 576px){
+  .navbar{
+    padding: 15px 26px;
+    height: 70px;
+  }
+
+  article{
+    margin: 20px 0 60px 0;
+    .main__impact-section{
+      &-title{
+        font-size: 3rem;
+      }
+      p{
+        margin-top: 0;
+      }
+      &-image{
+        & img{
+          height: 362px;
+        }
+      }
+    }
+  }
+
+  main{
+    padding: 0 26px;
+  }
+  
+  section{
+    h2{
+      font-size: 2.4rem;
+      margin-bottom: 0;
+    }
+  }
+
+  .main__product{
+    &-category{
+      &.healthcare{
+        padding-bottom: 60px;
+        & h2{
+          padding-bottom: 30px;
+        }
+        & .card__section{
+          &-product{
+            height: 440px;
+            min-width: 220px;
+            max-width: 220px;
+            &-image{
+              & img{
+                height: 200px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .info-section{
+    &__content{
+      .earth{
+        width: 60vw;
+      }
+    }
+  }
+}
