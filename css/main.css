@@ -309,13 +309,21 @@ section h2 {
   }
 }
 @media (max-width: 847px) {
+  .navbar {
+    padding: 15px 26px;
+    height: 70px;
+  }
   .navbar__menu {
     display: none;
   }
   .navbar .menu__mobile {
     display: block;
   }
+  main {
+    padding: 0 26px;
+  }
   article {
+    margin: 20px 0 60px 0;
     display: flex;
     flex-direction: column-reverse;
     justify-content: center;
@@ -394,13 +402,6 @@ section h2 {
   }
 }
 @media (max-width: 576px) {
-  .navbar {
-    padding: 15px 26px;
-    height: 70px;
-  }
-  article {
-    margin: 20px 0 60px 0;
-  }
   article .main__impact-section-title {
     font-size: 3rem;
   }
@@ -409,9 +410,6 @@ section h2 {
   }
   article .main__impact-section-image img {
     height: 362px;
-  }
-  main {
-    padding: 0 26px;
   }
   section h2 {
     font-size: 2.4rem;
